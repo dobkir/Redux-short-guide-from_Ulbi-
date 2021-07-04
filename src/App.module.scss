@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.cashAmount {
+  margin-bottom: 3rem;
+
+  font-size: 3rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.buttonsArea {
+  display: flex;
+}
+
+.button {
+  display: inline-block;
+  vertical-align: top;
+  padding: 1.1em 2.1em;
+
+  background: #121212;
+  border: none;
+  cursor: pointer;
+  border-radius: 2.1em;
+
+  font-family: inherit;
+  font-size: 1.2rem;
+  line-height: 1.1;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+
+  transition: background-color .2s linear;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    background-color: #bebeb4;
+    cursor: default;
+  }
+}
+
+.buttonRed {
+  background-color: #ED3024;
+  box-shadow: 0 7px 17px -10px rgba(#ED3024, .3);
+
+  &:hover,
+  &:focus {
+    background-color: darken(#ED3024, 10%);
+  }
+
+  &:active {
+    background-color: darken(#ED3024, 15%);
+  }
+
+  a {
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+.buttonBlue {
+  background-color: #3137C9;
+  box-shadow: 0 7px 17px -10px rgba(#3137C9, .3);
+
+  &:hover,
+  &:focus {
+    background-color: darken(#3137C9, 10%);
+  }
+
+  &:active {
+    background-color: darken(#3137C9, 15%);
+  }
+}
