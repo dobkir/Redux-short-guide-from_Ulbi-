@@ -15,8 +15,42 @@
   text-align: center;
 }
 
+.customer {
+  margin: 1rem;
+  padding: 1rem;
+
+  font-size: 1.4;
+  font-weight: 500;
+  line-height: 1.4;
+  border: 1px solid #3137C9;
+
+  cursor: default;
+
+  position: relative;
+
+  &:hover::after {
+    content: attr(data-title);
+    padding: 5px 10px;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+
+    background: rgba(255, 255, 230, 0.9);
+    border: 1px solid #333;
+
+    position: absolute;
+    left: 10%;
+    top: 70%;
+    z-index: 1;
+  }
+}
+
 .buttonsArea {
   display: flex;
+}
+
+button {
+  margin: 1rem;
 }
 
 .button {
