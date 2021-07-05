@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './App.module.scss';
 import { addCashAction, getCashAction } from './redux/cashReducer';
-import { addCustomerAction, CustomerType, removeCustomerAction } from './redux/customersReducer';
+import { addCustomersAction, CustomerType, removeCustomersAction } from './redux/customersReducer';
 import { AppStateType } from './redux/store';
+import { fetchCustomersList } from './asyncActions/customer';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -23,11 +24,11 @@ const App: React.FC = () => {
       name,
       id: Date.now(),
     };
-    dispatch(addCustomerAction(customer));
+    dispatch(addCustomersAction(customer));
   };
 
   const removeCustomer = (customer: CustomerType) => {
-    dispatch(removeCustomerAction(customer.id))
+    dispatch(removeCustomersAction(customer.id))
   };
 
   return (
@@ -50,6 +51,13 @@ const App: React.FC = () => {
         <button onClick={() => addCustomer(prompt("What customer do you want to add?", ""))}
           className={`${styles.button} ${styles.buttonBlue}`}>
           ADD A CUSTOMER
+        </button>
+      </div>
+
+      <div className={styles.buttonsArea}>
+        <button onClick={() => dispatch(fetchCustomersList())}
+          className={`${styles.button} ${styles.buttonBlue}`}>
+          GET CUSTOMERS LIST
         </button>
       </div>
 

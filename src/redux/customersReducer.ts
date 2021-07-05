@@ -12,8 +12,13 @@ export const initialState: CustomersStateType = {
 }
 
 export enum CustomersActionTypes {
+  ADD_CUSTOMERS_LIST = 'ADD_CUSTOMERS_LIST',
   ADD_CUSTOMERS = 'ADD_CUSTOMERS',
   REMOVE_CUSTOMERS = 'REMOVE_CUSTOMERS',
+}
+export interface addCustomersListActionType {
+  type: CustomersActionTypes.ADD_CUSTOMERS_LIST,
+  payload: [],
 }
 export interface addCustomersActionType {
   type: CustomersActionTypes.ADD_CUSTOMERS,
@@ -24,10 +29,15 @@ export interface removeCustomersActionType {
   payload: number,
 }
 
-export type CustomerAction = addCustomersActionType | removeCustomersActionType;
+export type CustomerAction = addCustomersListActionType | addCustomersActionType | removeCustomersActionType;
 
 export const customersReducer = (state = initialState, action: CustomerAction): CustomersStateType => {
   switch (action.type) {
+    case CustomersActionTypes.ADD_CUSTOMERS_LIST:
+      return {
+        ...state,
+        customers: [...state.customers, ...action.payload]
+      }
     case CustomersActionTypes.ADD_CUSTOMERS:
       return {
         ...state,
@@ -43,11 +53,14 @@ export const customersReducer = (state = initialState, action: CustomerAction): 
     default:
       return state;
   }
-}
+};
 
-export const addCustomerAction = (payload: CustomerType) => ({
+export const addCustomersListAction = (payload: any) => ({
+  type: CustomersActionTypes.ADD_CUSTOMERS_LIST, payload
+});
+export const addCustomersAction = (payload: CustomerType) => ({
   type: CustomersActionTypes.ADD_CUSTOMERS, payload
 });
-export const removeCustomerAction = (payload: number) => ({
+export const removeCustomersAction = (payload: number) => ({
   type: CustomersActionTypes.REMOVE_CUSTOMERS, payload
 });
