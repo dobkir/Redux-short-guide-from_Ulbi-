@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './App.module.scss';
-import { CashActionTypes } from './redux/cashReduser';
-import { CustomersActionTypes, CustomerType } from './redux/customersReduser';
+import { addCashAction, getCashAction } from './redux/cashReducer';
+import { addCustomerAction, CustomerType, removeCustomerAction } from './redux/customersReducer';
 import { AppStateType } from './redux/store';
 
 const App: React.FC = () => {
@@ -12,22 +12,22 @@ const App: React.FC = () => {
   const customers = useSelector((state: AppStateType) => state.customers.customers);
 
   const addCash = (cash: number) => {
-    dispatch({ type: CashActionTypes.ADD_CASH, payload: cash })
+    dispatch(addCashAction(cash))
   };
   const getCash = (cash: number) => {
-    dispatch({ type: CashActionTypes.GET_CASH, payload: cash })
+    dispatch(getCashAction(cash))
   };
 
   const addCustomer = (name: string | null) => {
     const customer: CustomerType = {
       name,
       id: Date.now(),
-    }
-    dispatch({ type: CustomersActionTypes.ADD_CUSTOMERS, payload: customer })
+    };
+    dispatch(addCustomerAction(customer));
   };
 
   const removeCustomer = (customer: CustomerType) => {
-    dispatch({ type: CustomersActionTypes.REMOVE_CUSTOMERS, payload: customer.id })
+    dispatch(removeCustomerAction(customer.id))
   };
 
   return (
