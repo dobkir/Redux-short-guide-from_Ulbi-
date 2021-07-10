@@ -3,7 +3,7 @@ export interface CashStateType {
 }
 
 export const initialState: CashStateType = {
-  cash: 0,
+  cash: 0 as number,
 }
 
 export enum CashActionTypes {
@@ -32,6 +32,6 @@ export const cashReducer = (state = initialState, action: CashAction): CashState
   }
 }
 
-export const addCashAction = (payload: number) => ({ type: CashActionTypes.ADD_CASH, payload });
-export const getCashAction = (payload: number) => ({ type: CashActionTypes.GET_CASH, payload });
+export const addCashAction = (payload: number): addCashActionType => ({ type: CashActionTypes.ADD_CASH, payload });
+export const getCashAction = (payload: number): getCashActionType => ({ type: CashActionTypes.GET_CASH, payload });
 

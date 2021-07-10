@@ -4,11 +4,11 @@ export interface CustomerType {
 }
 
 export interface CustomersStateType {
-  customers: any[]
+  customers: Array<CustomerType>
 }
 
 export const initialState: CustomersStateType = {
-  customers: []
+  customers: [] as Array<CustomerType>
 }
 
 export enum CustomersActionTypes {
@@ -22,7 +22,7 @@ export interface addCustomersListActionType {
 }
 export interface addCustomersActionType {
   type: CustomersActionTypes.ADD_CUSTOMERS,
-  payload: string,
+  payload: CustomerType,
 }
 export interface removeCustomersActionType {
   type: CustomersActionTypes.REMOVE_CUSTOMERS,
@@ -55,12 +55,12 @@ export const customersReducer = (state = initialState, action: CustomerAction): 
   }
 };
 
-export const addCustomersListAction = (payload: any) => ({
+export const addCustomersListAction = (payload: []): addCustomersListActionType => ({
   type: CustomersActionTypes.ADD_CUSTOMERS_LIST, payload
 });
-export const addCustomersAction = (payload: CustomerType) => ({
+export const addCustomersAction = (payload: CustomerType): addCustomersActionType => ({
   type: CustomersActionTypes.ADD_CUSTOMERS, payload
 });
-export const removeCustomersAction = (payload: number) => ({
+export const removeCustomersAction = (payload: number): removeCustomersActionType => ({
   type: CustomersActionTypes.REMOVE_CUSTOMERS, payload
 });
